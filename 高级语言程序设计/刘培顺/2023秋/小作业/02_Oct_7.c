@@ -7,106 +7,102 @@
 // *******在此处添加你的自定义函数、结构体或全局变量*******
 double calcIncome_switch(double payment)
 {
-    const double thousand = 1000;
-    const double persentage = 0.01;
-    int flag = payment / 100 / thousand;
+    int flag = payment / 100e3;
     double rest;
     switch(flag) {
         case 0:
             // <= 100k
-            return payment * 10 * persentage;
+            return payment * 10e-2;
         case 1:
             // 100k - 200k
-            rest = payment - 100 * thousand;
-            return  (100 * thousand) * (10 * persentage) + 
-                rest * (7.5 * persentage);
+            rest = payment - 100e3;
+            return  100e3 * 10e-2 + 
+                rest * 7.5e-2;
         case 2:
         case 3:
             // 200k - 400k
-            rest = payment - 200 * thousand;
-            return (100 * thousand) * (10 * persentage) + 
-                (100 * thousand) * (7.5 * persentage) + 
-                rest * (5 * persentage);
+            rest = payment - 200e3;
+            return 100e3 * 10e-2 + 
+                100e3 * 7.5e-2 + 
+                rest * 5e-2;
         case 4:
         case 5:
             // 400k - 600k
-            rest = payment - 400 * thousand;
-            return (100 * thousand) * (10 * persentage) + 
-                (100 * thousand) * (7.5 * persentage) + 
-                (200 * thousand) * (5 * persentage) + 
-                rest * (3 * persentage);
+            rest = payment - 400e3;
+            return 100e3 * 10e-2 + 
+                100e3 * 7.5e-2 + 
+                200e3 * 5e-2 + 
+                rest * 3e-2;
         case 6:
         case 7:
         case 8:
         case 9:
             // 600k - 1000k
-            rest = payment - 600 * thousand;
-            return (100 * thousand) * (10 * persentage) + 
-                (100 * thousand) * (7.5 * persentage) + 
-                (200 * thousand) * (5 * persentage) + 
-                (200 * thousand) * (3 * persentage) + 
-                rest * (1.5 * persentage);
+            rest = payment - 600e3;
+            return 100e3 * 10e-2 + 
+                100e3 * 7.5e-2 + 
+                200e3 * 5e-2 + 
+                200e3 * 3e-2 + 
+                rest * 1.5e-2;
         default:
             // > 1000k
-            rest = payment - 1000 * thousand;
-            return (100 * thousand) * (10 * persentage) + 
-                (100 * thousand) * (7.5 * persentage) + 
-                (200 * thousand) * (5 * persentage) + 
-                (200 * thousand) * (3 * persentage) + 
-                (400 * thousand) * (1.5 * persentage) + 
-                rest * (1 * persentage);
+            rest = payment - 1000e3;
+            return 100e3 * 10e-2 + 
+                100e3 * 7.5e-2 + 
+                200e3 * 5e-2 + 
+                200e3 * 3e-2 + 
+                400e3 * 1.5e-2 + 
+                rest * 1e-2;
     }
 
 }
 
 double calcIncome_if(double payment)
 {
-    const double thousand = 1000;
-    const double persentage = 0.01;
     double rest;
-    if (payment <= 100 * thousand)
+    if (payment <= 100e3)
     {
-        return payment * 10 * persentage;
+        return payment * 10e-2;
     }
-    else if (payment <= 200 * thousand)
+    else if (payment <= 200e3)
     {
-        rest = payment - 100 * thousand;
-        return (100 * thousand) * (10 * persentage) + 
-            rest * (7.5 * persentage);
+        rest = payment - 100e3;
+        return 100e3 * 10e-2 + 
+            rest * 7.5e-2;
     }
-    else if (payment <= 400 * thousand)
+    else if (payment <= 400e3)
     {
-        rest = payment - 200 * thousand;
-        return (100 * thousand) * (10 * persentage) + 
-            (100 * thousand) * (7.5 * persentage) + 
-            rest * (5 * persentage);
+        rest = payment - 200e3;
+        return 100e3 * 10e-2 + 
+            100e3 * 7.5e-2 + 
+            rest * 5e-2;
     }
-    else if (payment <= 600 * thousand)
+    else if (payment <= 600e3)
     {
-        rest = payment - 400 * thousand;
-        return (100 * thousand) * (10 * persentage) + 
-            (100 * thousand) * (7.5 * persentage) + 
-            (200 * thousand) * (5 * persentage) + 
-            rest * (3 * persentage);
+        rest = payment - 400e3;
+        return 100e3 * 10e-2 + 
+            100e3 * 7.5e-2 + 
+            200e3 * 5e-2 + 
+            rest * 3e-2;
     }
-    else if (payment <= 1000 * thousand)
+    else if (payment <= 1000e3)
     {
-        rest = payment - 600 * thousand;
-        return (100 * thousand) * (10 * persentage) + 
-            (100 * thousand) * (7.5 * persentage) + 
-            (200 * thousand) * (5 * persentage) + 
-            (200 * thousand) * (3 * persentage) + 
-            rest * (1.5 * persentage);
+        rest = payment - 600e3;
+        return 100e3 * 10e-2 + 
+            100e3 * 7.5e-2 + 
+            200e3 * 5e-2 + 
+            200e3 * 3e-2 + 
+            rest * 1.5e-2;
     }
     else
     {
-        rest = payment - 1000 * thousand;
-        return (100 * thousand) * (10 * persentage) + 
-            (100 * thousand) * (7.5 * persentage) + 
-            (200 * thousand) * (5 * persentage) + 
-            (200 * thousand) * (3 * persentage) + 
-            (400 * thousand) * (1.5 * persentage) + 
-            rest * (1 * persentage);
+        rest = payment - 1000e3;
+        return 100e3 * 10e-2 + 
+            100e3 * 7.5e-2 + 
+            200e3 * 5e-2 + 
+            200e3 * 3e-2 + 
+            400e3 * 1.5e-2 + 
+            rest * 1e-2;
     }
 }
 
