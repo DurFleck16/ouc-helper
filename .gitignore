@@ -1,2 +1,5 @@
-# 忽略.vscode文件夹
+# Ignore .vscode
 .vscode
+
+# Ignore a secrect file
+./mystery/_secret.md

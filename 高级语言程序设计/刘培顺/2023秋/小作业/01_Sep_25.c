@@ -9,38 +9,12 @@
 // 计算利息，活期year变量为0
 float calculateInterest(float money, int year)
 {
-    float rateOneYear = 0.015,
-        rateTwoYear = 0.021,
-        rateThreeYear = 0.0275,
-        rateFiveYear = 0.03,
-        rateCurrent = 0.0035;     // 活期存款利率
-    
-    float rate = 0;
-    if (year == 1)
+    const float rate[6] = {0.0035, 0.015, 0.021, 0.0275, NAN, 0.03}; 
+    if (year < 0 || year > 5 || money < 0 || isnan(rate[year]))
     {
-        rate = rateOneYear;
+        return -1;
     }
-    else if (year == 2)
-    {
-        rate = rateTwoYear;
-    }
-    else if (year == 3)
-    {
-        rate = rateThreeYear;
-    }
-    else if (year == 5)
-    {
-        rate = rateFiveYear;
-    }
-    else if (year == 0)
-    {
-        rate = rateCurrent;
-    }
-    else
-    {
-        return -1;  // -1为标志值，用于判断是否计算成功
-    }
-    return money * rate;
+    return money * rate[year];
 }
 
 float calcMonthLeft(float loan, float monthlyPayment, float rate)
@@ -82,7 +56,7 @@ void question_1()
     printf("请输入存款金额：");
     float money;
     scanf("%f", &money);
-    printf("请输入存款年限：");
+    printf("请输入存款年限：（0代表活期，1-5代表定期，4除外）");
     int year;
     scanf("%d", &year);
     float interest = calculateInterest(money, year);
